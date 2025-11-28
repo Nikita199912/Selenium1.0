@@ -1,1 +1,2 @@
 ### Тестирование веб-интерфейсов
+[![Java CI with Gradle](https://github.com/Nikita199912/Selenium1.0/actions/workflows/gradle.yml/badge.svg)](https://github.com/Nikita199912/Selenium1.0/actions/workflows/gradle.yml)
