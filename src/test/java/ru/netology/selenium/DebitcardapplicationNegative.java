@@ -1,4 +1,4 @@
-package ru.netology.selenium; // Убедитесь, что ваш пакет совпадает
+package ru.netology.selenium;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
@@ -41,7 +41,7 @@ public class DebitcardapplicationNegative {
 
     @Test
     public void shouldBeFailedIncorrectNameInput() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Gleb"); // Имя на латинице
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Gleb");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79800555555");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button")).click();
@@ -53,8 +53,8 @@ public class DebitcardapplicationNegative {
 
     @Test
     public void shouldBeFailedIfInvalidPhoneNumberTooShort() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иванов Иван"); // Валидное имя
-        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+712345"); // Невалидный номер: слишком короткий
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иванов Иван");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+712345");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button")).click();
         assertEquals("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.",
@@ -65,15 +65,15 @@ public class DebitcardapplicationNegative {
 
     @Test
     public void shouldBeFailedIfAgreementNotChecked() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Петров Петр"); // Валидное имя
-        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79123456789"); // Валидный телефон
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Петров Петр");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79123456789");
         driver.findElement(By.cssSelector("button")).click();
         assertTrue(driver.findElement(By.cssSelector("[data-test-id=agreement].input_invalid")).isDisplayed());
     }
 
     @Test
     public void shouldBeFailedIfNameIsEmpty() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys(""); // Пустое имя
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79123456789");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button")).click();
@@ -84,8 +84,8 @@ public class DebitcardapplicationNegative {
 
     @Test
     public void shouldBeFailedIfPhoneIsEmpty() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Сергеев Сергей"); // Валидное имя
-        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys(""); // Пустой телефон
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Сергеев Сергей");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button")).click();
         assertEquals("Поле обязательно для заполнения",
@@ -96,7 +96,7 @@ public class DebitcardapplicationNegative {
 
     @Test
     public void shouldBeFailedIfNameHasNumbers() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иван123"); // Имя с цифрами
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иван123");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79123456789");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button")).click();
@@ -107,8 +107,8 @@ public class DebitcardapplicationNegative {
 
     @Test
     public void shouldBeFailedIfPhoneWithoutPlus() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Олег Олегов"); // Валидное имя
-        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("79123456789"); // Телефон без начального '+'
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Олег Олегов");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("79123456789");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button")).click();
         assertEquals("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.",
